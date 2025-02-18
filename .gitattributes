@@ -1,4 +1,3 @@
-
 =======
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
@@ -63,4 +62,7 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+<<<<<<< HEAD
 >>>>>>> 29271ea (Add .gitattributes and .gitignore.)
+=======
+>>>>>>> c41445542cb8bf9ae532896eb892b8b74b305a11
