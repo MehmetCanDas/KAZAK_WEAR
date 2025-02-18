@@ -1,0 +1,50 @@
+﻿
+using Catalog.Dtos.ProductDtos;
+using Microsoft.AspNetCore.Mvc;
+
+
+namespace MultiShop.Catalog.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductsController : ControllerBase
+    {
+        private readonly Services.ProductServices.IProductService _ProductService;
+
+        public ProductsController(Services.ProductServices.IProductService ProductService)
+        {
+            _ProductService = ProductService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ProductList()
+        {
+            var values = await _ProductService.GetAllProductAsync();
+            return Ok(values);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProductById(string id)
+        {
+            var result = await _ProductService.GetByIdProductAsync(id);
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        {
+            await _ProductService.CreateProductAsync(createProductDto);
+            return Ok("Urun basariyla eklendi");
+        }
+        [HttpDelete]
+        public async Task<IActionResult> DeleteProduct(string id)
+        {
+            await _ProductService.DeleteProductAsync(id);
+            return Ok("Urun basariyla silindi");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
+        {
+            await _ProductService.UpdateProductAsync(updateProductDto);
+            return Ok("Urun basariyla guncellendi");
+        }
+    }
+}
