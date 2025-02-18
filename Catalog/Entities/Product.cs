@@ -13,6 +13,7 @@ namespace Catalog.Entities
         public string ProductStock { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryId { get; set; }
+        [BsonIgnore]
         public Category Category { get; set; }
         
     }
