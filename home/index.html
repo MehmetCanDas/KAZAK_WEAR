@@ -47,7 +47,7 @@
           <p class="sale__subtitle">Klasik </p>
           <h4 class="sale__title"> <span>40%</span> indirim</h4>
           <p class="sale__subtitle">-Bu fırsatı kaçırma-</p>
-          <button class="btn sale__btn">Alışverışe Başla</button>
+          <button class="btn sale__btn" onclick="fetchData('67b4f267fe492ee7e3557df9')">Alışverışe Başla</button>
         </div>
       </div>
       <div class="sale__card">
@@ -56,7 +56,7 @@
           <p class="sale__subtitle">Bohem</p>
           <h4 class="sale__title"><span>25%</span> indirim</h4>
           <p class="sale__subtitle">-Bu fırsatı kaçırma-</p>
-          <button class="btn sale__btn">Alışverışe Başla</button>
+          <button class="btn sale__btn" onclick="fetchData('67b4f28cfe492ee7e3557dfa')">Alışverışe Başla</button>
         </div>
       </div>
       <div class="sale__card">
@@ -65,7 +65,7 @@
           <p class="sale__subtitle">Basic</p>
           <h4 class="sale__title"><span>20%</span> indirim</h4>
           <p class="sale__subtitle">-Bu fırsatı kaçırma-</p>
-          <button class="btn sale__btn">Alışverışe Başla</button>
+          <button class="btn sale__btn" onclick="fetchData('67b4f296fe492ee7e3557dfb')">Alışverışe Başla</button>
         </div>
       </div>
     </div>
@@ -211,6 +211,18 @@
       </form>
     </div>
   </div>
+  <script>
+    function fetchData(category) {
+      fetch('https://localhost:7126/api/Products/category/'+`${category}`)
+        .then(response => response.json())
+        .then(data => {
+          alert(`${category} kategorisi için gelen veri: \n\n${JSON.stringify(data, null, 2)}`);
+        })
+        .catch(error => {
+          alert(`Hata oluştu: ${error}`);
+        });
+    }
+  </script>
 </body>
 
 </html>
